@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.34930.48
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YUVAndRGB", "YUVAndRGB\YUVAndRGB.vcxproj", "{6B259494-2CEE-49A2-B4AE-F42B7535311E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PCMDataProcess", "PCMDataProcess\PCMDataProcess.vcxproj", "{B7F37392-811A-4597-B35E-1AFE274F61CF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio_capture_test", "audio_capture_test\audio_capture_test.vcxproj", "{20B1145E-9D01-4D93-A534-26C174BCCA10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,18 @@ Global
 		{6B259494-2CEE-49A2-B4AE-F42B7535311E}.Release|x64.Build.0 = Release|x64
 		{6B259494-2CEE-49A2-B4AE-F42B7535311E}.Release|x86.ActiveCfg = Release|Win32
 		{6B259494-2CEE-49A2-B4AE-F42B7535311E}.Release|x86.Build.0 = Release|Win32
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Debug|x64.ActiveCfg = Debug|x64
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Debug|x64.Build.0 = Debug|x64
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Debug|x86.ActiveCfg = Debug|x64
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Release|x64.ActiveCfg = Release|x64
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Release|x64.Build.0 = Release|x64
+		{B7F37392-811A-4597-B35E-1AFE274F61CF}.Release|x86.ActiveCfg = Release|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Debug|x64.ActiveCfg = Debug|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Debug|x64.Build.0 = Debug|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Debug|x86.ActiveCfg = Debug|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Release|x64.ActiveCfg = Release|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Release|x64.Build.0 = Release|x64
+		{20B1145E-9D01-4D93-A534-26C174BCCA10}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
