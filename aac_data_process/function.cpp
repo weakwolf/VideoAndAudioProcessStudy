@@ -4,7 +4,10 @@
 #include <cstdlib>
 #include <cstring>
 
-int GetADTSFrame(unsigned char* pBuf, int iBufSize, unsigned char* pFrame, int* pFrameSize)
+#define MAX_BUFFER_SIZE	1024*1024// 缓冲区大小
+#define ADTS_FRAME_SIZE	1024*5// ADTS帧大小
+
+int GetADTSFrame(unsigned char* pBuf, int& iBufSize, unsigned char* pFrame, int* pFrameSize)
 {
 	if (!pBuf || !pFrame || !pFrameSize)
 		return -1;
@@ -55,17 +58,16 @@ int ParseAacData(const char* pUrl /*= nullptr*/)
 	if (nullptr == pInput) return -1;
 	
 	// 存放ADTS帧的缓冲区
-	unsigned char* pFrame = (unsigned char*)malloc(1024*5);
+	unsigned char* pFrame = (unsigned char*)malloc(ADTS_FRAME_SIZE);
 	if (nullptr == pFrame) return -1;
 	// 存放一段aac码流的缓冲区
-	unsigned char* pBuf = (unsigned char*)malloc(1024*1024);
+	unsigned char* pBuf = (unsigned char*)malloc(MAX_BUFFER_SIZE);
 	if (nullptr == pBuf) return -1;
 
 	printf("-----+- ADTS Frame Table -+------+\n");
 	printf(" NUM | Profile | Frequency| Size |\n");
 	printf("-----+---------+----------+------+\n");
 
-	// 记录当aacframe的大小大到pBuf无法存储时，多出来的需要的存储空间
 	int iOffset = 0;
 	// 记录ADTS帧的大小
 	int iSize = 0;
@@ -73,13 +75,15 @@ int ParseAacData(const char* pUrl /*= nullptr*/)
 	int iCount = 1;
 	while (!feof(pInput))
 	{
-		int iDataSize = fread(pBuf + iOffset, 1, 1024 * 1024 - iOffset, pInput);
+		fread(pBuf + iOffset, 1, MAX_BUFFER_SIZE - iOffset, pInput);
 		unsigned char* pTempBuf = pBuf;
+		// 缓冲区中剩余可读数据的长度
+		int iRestDataSize = MAX_BUFFER_SIZE;
 
 		// 对于当前读取出的一段aac码流，尝试读取出其中的aac帧，如果有的话
 		while (1)
 		{
-			int iRet = GetADTSFrame(pTempBuf, iDataSize, pFrame, &iSize);
+			int iRet = GetADTSFrame(pTempBuf, iRestDataSize, pFrame, &iSize);
 			if (-1 == iRet)
 			{
 				break;
@@ -87,8 +91,8 @@ int ParseAacData(const char* pUrl /*= nullptr*/)
 			else if (1 == iRet)
 			{
 				// 如果ADTS被截断了，先把前半段复制复制到缓冲区开始处
-				memcpy(pBuf, pTempBuf, iDataSize);
-				iOffset = iSize;
+				memcpy(pBuf, pTempBuf, iRestDataSize);
+				iOffset = iRestDataSize;
 				break;
 			}
 
@@ -124,11 +128,13 @@ int ParseAacData(const char* pUrl /*= nullptr*/)
 			fprintf(stdout, "%5d| %8s|  %8s| %5d|\n", iCount, strProfile, strFrequence, iSize);
 
 			pTempBuf += iSize;
-			iDataSize -= iSize;
+			iRestDataSize -= iSize;
 		}
 	}
 
 	free(pFrame);
 	free(pBuf);
 	fclose(pInput);
+
+	return 0;
 }

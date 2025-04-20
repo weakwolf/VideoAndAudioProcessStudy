@@ -10,12 +10,13 @@
  * 从某段码流中获取adts帧
  *
  * @param pBuf			码流缓冲区
- * @param iBufSize		缓冲区大小
+ * @param iBufSize		缓冲区中剩余可读数据的大小
  * @param pFrame		存储ADTS的缓冲区
  * @param pFrameSize	ADTS帧大小，需要返还给调用方
  * @return				0代表成功，其他代表失败，-1代表当前缓冲区没有同步字，1代表当前的frame还有一部分数据在pBuf之外
+ *						此时会重新从ADTS开始位置读取1024 * 1024个字节
  */
-int	GetADTSFrame(unsigned char* pBuf, int iBufSize, unsigned char* pFrame, int* pFrameSize);
+int	GetADTSFrame(unsigned char* pBuf, int& iBufSize, unsigned char* pFrame, int* pFrameSize);
 
 /**
  * 解析AAC码流（ADTS）
