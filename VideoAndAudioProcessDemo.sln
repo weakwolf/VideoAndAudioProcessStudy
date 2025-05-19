@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aac_data_process", "aac_dat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "flv_data_process", "flv_data_process\flv_data_process.vcxproj", "{41FD0DE2-ACF9-4FE3-8561-870C24C3D35D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udp_rtp_process", "udp_rtp_process\udp_rtp_process.vcxproj", "{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -67,6 +69,14 @@ Global
 		{41FD0DE2-ACF9-4FE3-8561-870C24C3D35D}.Release|x64.Build.0 = Release|x64
 		{41FD0DE2-ACF9-4FE3-8561-870C24C3D35D}.Release|x86.ActiveCfg = Release|Win32
 		{41FD0DE2-ACF9-4FE3-8561-870C24C3D35D}.Release|x86.Build.0 = Release|Win32
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Debug|x64.ActiveCfg = Debug|x64
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Debug|x64.Build.0 = Debug|x64
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Debug|x86.ActiveCfg = Debug|Win32
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Debug|x86.Build.0 = Debug|Win32
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Release|x64.ActiveCfg = Release|x64
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Release|x64.Build.0 = Release|x64
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Release|x86.ActiveCfg = Release|Win32
+		{4D46A7BA-4F7C-47E7-BF67-0B6D3B727A86}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
